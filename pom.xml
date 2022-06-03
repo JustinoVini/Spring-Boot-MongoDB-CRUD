@@ -12,7 +12,7 @@
 	<artifactId>springboot-mongodbapp</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springboot-mongodbapp</name>
-	<description>Demo project for Spring Boot - Springboot-MongoDB App</description>
+	<description>App criado com angular, SpringMVC, Springboot e MongoDB</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
