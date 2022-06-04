@@ -1,4 +1,9 @@
 package com.example.sprmongodb.com.example.sprmongodb.repository;
 
-public interface EmployeeRepository {
+import org.springframework.data.mongodb.repository.MongoRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface EmployeeRepository extends MongoRepository {
+    
 }
