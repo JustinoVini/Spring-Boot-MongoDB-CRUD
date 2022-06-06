@@ -7,10 +7,12 @@ import com.example.sprmongodb.service.SequenceGeneratorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.ResourceAccessException;
+import org.springframework.web.bind.annotation.DeleteMapping ;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 //@CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -62,5 +64,18 @@ public class EmployeeController {
         employee.setFirstName(employeeDetails.getFirstName());
         final Employee updateEmployee = employeeRepository.save(employee);
         return ResponseEntity.ok().body(updateEmployee);
+    }
+
+    // Método para exclusão de registro.
+    @DeleteMapping("employee/{id}")
+    public Map<String, Boolean> deleteEmployee(@PathVariable(value = "id") Long employeeId)
+            throws ResourceNotFoundException{
+        Employee employee = employeeRepository.findById(employeeId).orElseThrow(
+                ()-> new ResourceNotFoundException("Colaborador, não encontrado para esse ID: " + employeeId));
+
+        employeeRepository.delete(employee);
+        Map<String, Boolean> response = new HashMap<>();
+        response.put("deleted", Boolean.TRUE);
+        return response;
     }
 }
