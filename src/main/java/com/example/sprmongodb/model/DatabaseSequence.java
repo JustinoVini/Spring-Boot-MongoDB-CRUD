@@ -1,4 +1,4 @@
-package com.example.sprmongodb.com.example.sprmongodb.model;
+package com.example.sprmongodb.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;

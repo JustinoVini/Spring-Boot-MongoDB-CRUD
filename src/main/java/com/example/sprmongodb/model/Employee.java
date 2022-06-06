@@ -1,4 +1,4 @@
-package com.example.sprmongodb.com.example.sprmongodb.model;
+package com.example.sprmongodb.model;
 
 
 import javax.validation.constraints.NotBlank;
@@ -16,7 +16,7 @@ public class Employee {
     // Criação de uma constante que recebera a sequencia de usuarios.
     // Com a notação Transient que significa que o mesmo não será serializado ou não.
     @Transient
-    private static final String SEQUENCE_NAME = "users_sequence";
+    public static final String SEQUENCE_NAME = "users_sequence";
 
     // Criação do atributo Id do tipo long
     /*
@@ -52,14 +52,11 @@ public class Employee {
 
     }
 
-    public Employee(String firstName, String lastName, String emailId) {
+    public Employee(long id, String firstName, String lastName, String emailId) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.emailId = emailId;
-    }
-
-    public static String getSequenceName() {
-        return SEQUENCE_NAME;
     }
 
     public long getId() {
@@ -95,9 +92,9 @@ public class Employee {
     }
 
     /*
-    O método abaixo mandará todas as informações
-    passada para o banco e as transformará em string.
-     */
+        O método abaixo mandará todas as informações
+        passada para o banco e as transformará em string.
+         */
     @Override
     public String toString(){
         return "Employee [id=" + id + ", firstName=" + firstName + ", lastName="
